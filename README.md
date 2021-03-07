@@ -12,7 +12,7 @@ You don't have to open any of Xcode , Android Studio or Chrome dev console for v
 
 ## Usage
 ### Install from npm :  
-`npm install --save @KirillTarasenko/react-native-console-panel`
+`npm install --save KirillTarasenko/react-native-console-panel`
 
 ### Integrate into your app:  
 
