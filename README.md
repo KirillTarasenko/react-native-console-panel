@@ -1,3 +1,6 @@
+# This is fork NativeSH/react-native-console-panel
+Main changes: UI, Using as Component and modern code. Concept based on main repository.
+
 # React Native Console Panel  
 A Simple debug panel component to view console message right inside the app.  
 This will be helpful during your react native development.
@@ -9,15 +12,16 @@ You don't have to open any of Xcode , Android Studio or Chrome dev console for v
 
 ## Usage
 ### Install from npm :  
-`npm install --save react-native-console-panel`
+`npm install --save @KirillTarasenko/react-native-console-panel`
 
 ### Integrate into your app:  
 
 ```javascript
 //import the component
-var ConsolePanel = require('react-native-console-panel').displayWhenDev();
+import ConsolePanel from 'react-native-console-panel';
+
 ...
-render:function(){
+render(){
 	return (
 		<View style={styles.container}>
         	...
@@ -25,38 +29,29 @@ render:function(){
           	<Text>
             Hit me!
           	</Text>
-        	</TouchableHighlight>
-        
-        	//Panel will float above your content
-        	//use top,left to control panel's position 
-        	{ConsolePanel}
+			</TouchableHighlight>
+			
+			
+        	{__DEV__ ? <ConsolePanel style={{ maxHeight: 500 }} /> : null}
       </View>
       );
 ```
-* `displayWhenDev()` will return the component or null accroding `__DEV__` flag
-* `displayIgnoreDevVariable()` ignore `__DEV__` variable
 
-### Yellowbox
-The react-native add a 'Yellowbox' in **v0.16(not release yet)** for showing warn/error messages.**This module disable that by default**.
-If you want to keep both yellowbox  and console ,you should import like this `require('react-native-console-panel/keep-yellowbox')`.
+### How it look?
+<img width="309" alt="Снимок экрана 2021-03-07 в 12 32 20" src="https://user-images.githubusercontent.com/18124381/110235805-1cf09f80-7f43-11eb-914a-6c3a4cd9782c.png">
+<img width="302" alt="Снимок экрана 2021-03-07 в 12 32 38" src="https://user-images.githubusercontent.com/18124381/110235812-21b55380-7f43-11eb-9658-e3c29aa93e21.png">
 
-Now, when you use 'console' to print something , it will be like this:  
-![screenshot](https://github.com/sospartan/react-native-console-panel/raw/master/demo.gif )
 
 ### Avaiable props:
 
 ```javascript
 	propTypes:{
-        limit:React.PropTypes.number,//message limit number
-        open:React.PropTypes.bool,//is open when mounted
+		open: PropTypes.bool,//is open when mounted
+		style: PropTypes.object,//style ConsoleView container
     }
 ```
 
-## TO-DOs  
-* <del>Count unread log when panel is closing</del>
-* <del>'clear' button</del>
-* System infomation shapshot
-* Better looking?
-* ...
+### Why dont work on production?
+Maybe you use babel-plugin-transform-remove-console ?)
 
-**I'm new to Javascript .So any pull request is welcomed!**
+**Waiting your PR!**
